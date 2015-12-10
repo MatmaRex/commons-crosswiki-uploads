@@ -10,8 +10,8 @@ exist = Hash[ exist ]
 def classify upload
 	comment = upload[:comment]
 	tags = upload[:tags]
-	return :uploadwizard if comment == 'User created page with UploadWizard'
 	return :crosswikiupload if tags.include? 'cross-wiki-upload'
+	return :uploadwizard if comment == 'User created page with UploadWizard'
 	return :gwtoolset if comment.start_with? '[[Commons:GWT|GWToolset]]'
 	return :vicuna if comment.start_with? 'VicuñaUploader'
 	return :norwegian if comment.start_with? 'From the Norwegian National Library'
@@ -30,8 +30,8 @@ def classify upload
 end
 
 types = [
-	:uploadwizard,
 	:crosswikiupload,
+	:uploadwizard,
 	:gwtoolset,
 	:vicuna,
 	:norwegian,
@@ -46,7 +46,10 @@ types = [
 	:other,
 ]
 
-puts "timestamp\t#{types.map{|t| "#{t}-good\t#{t}-bad" }.join("\t") }"
+out = [ 'timestamp' ]
+out += types.map{|t| ["#{t}-good", "#{t}-bad"] }.flatten
+puts out.join("\t")
+
 log
 	.sort_by{|a| a[:timestamp] }
 	.group_by{|a| a[:timestamp][/^\d{4}-\d{2}-\d{2}/] }
