@@ -3,7 +3,7 @@ require 'sunflower'
 
 s = Sunflower.new 'commons.wikipedia.org'
 
-q = 'action=query&leend=2015-10-21T08:25:37Z&list=logevents&lelimit=max&leprop=title|user|timestamp|comment|details|tags&letype=upload&leaction=upload%2Fupload&continue='
+q = 'action=query&leend=2015-10-01T00:00:00Z&list=logevents&lelimit=max&leprop=title|user|timestamp|comment|tags&letype=upload&leaction=upload%2Fupload&continue='
 data = []
 continue = ''
 
