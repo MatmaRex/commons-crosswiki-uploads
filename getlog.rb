@@ -15,8 +15,5 @@ while true
 	continue = resp['continue']['continue'] + '&lecontinue=' + resp['continue']['lecontinue']
 end
 
-crosswiki_data, other_data = *data.partition{|a| a['tags'].include? 'cross-wiki-upload' }
-
 require 'json'
-File.binwrite 'log_crosswiki.json', JSON.pretty_generate(crosswiki_data)
-File.binwrite 'log_other.json', JSON.pretty_generate(other_data)
+File.binwrite 'log.json', JSON.generate(data)

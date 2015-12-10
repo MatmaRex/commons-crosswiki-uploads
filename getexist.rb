@@ -4,13 +4,11 @@ require 'parallel'
 
 s = Sunflower.new 'commons.wikipedia.org'
 
-# data = JSON.parse File.binread 'log_other.json'
-# data += JSON.parse File.binread 'log_crosswiki.json'
-titles = JSON.parse File.binread 'log_other_titles.json'
-titles += JSON.parse File.binread 'log_crosswiki_titles.json'
+data = JSON.parse File.binread('log.json'), symbolize_names: true
+titles = data.map{|a| a[:title] }
+data = nil
 
 data2 = []
-# data.map{|a| a['title']}.each_slice(50).each do |slice|
 # titles.each_slice(50).each do |slice|
 Parallel.each(titles.each_slice(50).to_a, in_threads: 10) do |slice|
 	begin
