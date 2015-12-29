@@ -9,6 +9,10 @@ exist = Hash[ exist ]
 def classify upload
 	comment = upload[:comment]
 	tags = upload[:tags]
+	return :crosswikiupload1 if tags.include? 'cross-wiki-upload-1'
+	return :crosswikiupload2 if tags.include? 'cross-wiki-upload-2'
+	return :crosswikiupload3 if tags.include? 'cross-wiki-upload-3'
+	return :crosswikiupload4 if tags.include? 'cross-wiki-upload-4'
 	return :crosswikiupload if tags.include? 'cross-wiki-upload'
 	return :uploadwizard if comment == 'User created page with UploadWizard'
 	return :gwtoolset if comment.start_with? '[[Commons:GWT|GWToolset]]'
@@ -29,6 +33,10 @@ def classify upload
 end
 
 types = [
+	:crosswikiupload1,
+	:crosswikiupload2,
+	:crosswikiupload3,
+	:crosswikiupload4,
 	:crosswikiupload,
 	:uploadwizard,
 	:gwtoolset,
