@@ -12,7 +12,8 @@ users = log
 
 log = nil; GC.start
 
-firstcontrib = {}
+firstcontrib = JSON.parse File.binread('firstcontrib.json') rescue {}
+users -= firstcontrib.keys
 
 while users.length > 0
 	users_deferred = []
