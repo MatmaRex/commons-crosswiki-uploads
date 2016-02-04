@@ -2,7 +2,7 @@
 require 'sunflower'
 require 'parallel'
 
-s = Sunflower.new 'commons.wikipedia.org'
+s = Sunflower.new 'https://commons.wikipedia.org'
 
 log = JSON.parse File.binread('log.json'), symbolize_names: true
 

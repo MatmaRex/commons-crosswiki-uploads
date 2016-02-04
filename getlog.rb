@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'sunflower'
 
-s = Sunflower.new 'commons.wikipedia.org'
+s = Sunflower.new 'https://commons.wikipedia.org'
 
 q = 'action=query&leend=2015-12-07T00:00:00Z&list=logevents&lelimit=max&leprop=title|user|timestamp|comment|tags&letype=upload&leaction=upload%2Fupload&continue='
 data = []

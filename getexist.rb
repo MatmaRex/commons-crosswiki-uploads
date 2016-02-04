@@ -2,7 +2,7 @@
 require 'sunflower'
 require 'parallel'
 
-s = Sunflower.new 'commons.wikipedia.org'
+s = Sunflower.new 'https://commons.wikipedia.org'
 
 data = JSON.parse File.binread('log.json'), symbolize_names: true
 titles = data.map{|a| a[:title] }
